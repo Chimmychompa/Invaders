@@ -1,0 +1,17 @@
+div {
+  box-sizing: border-box;
+}
+body{
+  background-color:  blue;
+}
+
+canvas {
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px gray;
+  background-color: lightblue;
+}
+
+h1{
+  color: white;
+
+}
