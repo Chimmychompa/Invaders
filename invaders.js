@@ -14,8 +14,6 @@ var backBufferCtx = screen.getContext('2d');
 backBuffer.height = HEIGHT;
 backBuffer.width = WIDTH;
 
-var ui = document.getElementById("ui");
-
 //public game state variables
 var start = null;
 var score = 0;
@@ -121,7 +119,10 @@ function loop(timestamp) {
     window.requestAnimationFrame(loop);
   }else{
     //if game is over then display gave over message
-    ui.innerHTML = "Invaders ---- GAME OVER! (Press R to restart) --- Score: " + score;
+    backBufferCtx.clearRect(0, 0, WIDTH, HEIGHT);
+    backBufferCtx.font = '12pt Calibri';
+    backBufferCtx.fillStyle = 'black';
+    backBufferCtx.fillText("Invaders ---- GAME OVER! (Press R to restart) --- Score: " + score, 20, 20);
     window.requestAnimationFrame(loop);
     //if player wants to play again, reset all game state variables
     if(currentInput.r){
@@ -151,8 +152,7 @@ function pollInput() {
   * elapsed between frames
   */
 function update(elapsedTime, ctx) {
-  //updates the ui
-  ui.innerHTML = "Invaders ---- Lives: " + lives + " ---- Score: " + score;
+
   // shoot when spacebar is pressed
   if(priorInput.space) {
     // TODO: Fire bullet
@@ -267,8 +267,15 @@ function Enemy(x, y, elapsedTime, ctx){
   * elapsed between frames
   */
 function render(ctx, elapsedTime) {
-  //players space ship
+  //clears the screen
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+  //updates the ui
+  ctx.font = '12pt Calibri';
+  ctx.fillStyle = 'black';
+  ctx.fillText("Invaders ---- Lives: " + lives + " ---- Score: " + score, 20, 20);
+
+  //players space ship
   ctx.fillStyle = "#ff0000";
   ctx.fillRect(10+x,10+y,20,20);
   ctx.fillRect(19+x,5+y,2,20);
