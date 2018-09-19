@@ -122,7 +122,7 @@ function loop(timestamp) {
     backBufferCtx.clearRect(0, 0, WIDTH, HEIGHT);
     backBufferCtx.font = '12pt Calibri';
     backBufferCtx.fillStyle = 'black';
-    backBufferCtx.fillText("Invaders ---- GAME OVER! (Press R to restart) --- Score: " + score, 20, 20);
+    backBufferCtx.fillText("GAME OVER! (Press R to restart) --- Score: " + score, 20, 20);
     window.requestAnimationFrame(loop);
     //if player wants to play again, reset all game state variables
     if(currentInput.r){
@@ -273,7 +273,7 @@ function render(ctx, elapsedTime) {
   //updates the ui
   ctx.font = '12pt Calibri';
   ctx.fillStyle = 'black';
-  ctx.fillText("Invaders ---- Lives: " + lives + " ---- Score: " + score, 20, 20);
+  ctx.fillText("Lives: " + lives + " ---- Score: " + score, 20, 20);
 
   //players space ship
   ctx.fillStyle = "#ff0000";
